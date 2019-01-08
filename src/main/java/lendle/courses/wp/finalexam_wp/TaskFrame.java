@@ -6,6 +6,7 @@
 package lendle.courses.wp.finalexam_wp;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,6 +71,8 @@ public class TaskFrame extends JInternalFrame {
                 if (modified) {
                     //Q5: 發現變更，顯示 confirm dialog 詢問是否要儲存 (20%)
                     int ret = -1;
+                    
+                    JOptionPane.showConfirmDialog(this , "是否要儲存", "Message", JOptionPane.YES_NO_OPTION);
                     /////////////////////////////////////////////
                     if (ret == JOptionPane.YES_OPTION) {
                         TaskDB.save(getNoteTitle(), getNoteContent());

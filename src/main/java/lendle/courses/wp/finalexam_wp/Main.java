@@ -5,9 +5,12 @@
  */
 package lendle.courses.wp.finalexam_wp;
 
+import java.awt.BorderLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -37,7 +40,7 @@ public class Main extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList1 = new javax.swing.JList<String>();
         jToolBar1 = new javax.swing.JToolBar();
         buttonNew = new javax.swing.JButton();
 
@@ -53,12 +56,13 @@ public class Main extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 575, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,7 +81,7 @@ public class Main extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jScrollPane2);
 
-        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.LINE_START);
 
         jToolBar1.setRollover(true);
 
@@ -106,7 +110,7 @@ public class Main extends javax.swing.JFrame {
         DefaultListModel model = (DefaultListModel) this.jList1.getModel();
         if (model.contains(title)) {
             //Q1: 開啟 message dialog （10%）
-            
+            JOptionPane.showMessageDialog(this.jDesktopPane1, "不可重複", "Message", JOptionPane.ERROR_MESSAGE);
             ////////////////////
             return;
         }
@@ -114,6 +118,19 @@ public class Main extends javax.swing.JFrame {
         model.addElement(title);
         //Q2: 建立 TaskFrame（等同於 JInternalFrame）
         //加到 jDesktopPane1 (20%)
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        
+        frame.setContentPane(this.jDesktopPane1);
+        
+        JInternalFrame iframe = new JInternalFrame("internal",true,true,true);
+        frame.getContentPane().add(iframe);
+        iframe.setSize(300, 300);
+        iframe.setVisible(true);
+        
+        frame.setSize(500, 500);
+        frame.setVisible(true);
         
         ///////////////////////////////////////
     }//GEN-LAST:event_buttonNewActionPerformed
@@ -133,6 +150,7 @@ public class Main extends javax.swing.JFrame {
             //Q3: 建立 TaskFrame（等同於 JInternalFrame）
             //設定 noteTitle, noteContent
             //加到 jDesktopPane1 (20%)
+        
             
             //////////////////////////////////////////
         }
